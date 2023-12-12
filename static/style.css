@@ -1,0 +1,121 @@
+div {
+    justify-content: space-between;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #10b997;
+}
+
+form {
+    display: flexbox;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20PX;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label, select, input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.disclaimer {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.disclaimer h2 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.disclaimer p {
+    color: #666;
+    font-size: 14px;
+}
+
+body, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    background-color:#3498db;
+    color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+p + p {
+    margin-top: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.patient-info-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+
+
+

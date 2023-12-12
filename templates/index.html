@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Symptom Checker</title>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <h1 class="fixed-header">DISEASE PREDICTOR</h1>
+
+    <form action="/predict" method="post" onsubmit="addPatientNameToURL()">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" required>
+        <br><br>
+
+        <label for="Symptom1">Symptom 1:</label>
+        <select name="Symptom1" required>
+            <option value="None" disabled selected>Select a symptom</option>
+            {% for symptom in symptoms %}
+            <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="Symptom2">Symptom 2:</label>
+        <select name="Symptom2" required>
+            <option value="None" disabled selected>Select a symptom</option>
+            {% for symptom in symptoms %}
+            <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="Symptom3">Symptom 3:</label>
+        <select name="Symptom3" required>
+            <option value="None" disabled selected>Select a symptom</option>
+            {% for symptom in symptoms %}
+            <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="Symptom4">Symptom 4:</label>
+        <select name="Symptom4" required>
+            <option value="None" disabled selected>Select a symptom</option>
+            {% for symptom in symptoms %}
+            <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="Symptom5">Symptom 5:</label>
+        <select name="Symptom5" required>
+            <option value="" disabled selected>Select a symptom</option>
+            {% for symptom in symptoms %}
+            <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+    </div>
+
+    {% if message %}
+    <p class="error">{{ message }}</p>
+    {% endif %}
+
+    <footer>
+        <div class="disclaimer">
+            <h2>Disclaimer</h2>
+            <p>This website provides information for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Consult with a healthcare professional for any medical concerns.</p>
+        </div>
+    </footer>
+
+    <script>
+        function addPatientNameToURL() {
+            const patientName = document.getElementById("patientName").value;
+            const form = document.querySelector("form");
+            form.action = `/predict?patientName=${encodeURIComponent(patientName)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Symptom Checker - Result</title>
+</head>
+<body>
+    <header>
+    <h1>DISEASE PREDICTOR</h1>
+    </header>
+    <div class="patient-info-container">
+        <p><strong style="font-size: 20px"><center>Report</center></strong></p>
+        <p><strong>Patient Name:</strong> <span id="patientName"></span></p>
+        <p><strong>Date:</strong> <span id="currentDate">N/A</span></p>
+        <p><strong>Day:</strong> <span id="currentDay">N/A</span></p>
+        <p><strong>Time:</strong> <span id="currentTime">N/A</span></p>
+
+        <p><strong>Predicted Disease:</strong> {{ disease_prediction }}</p>
+        <p><strong>Accuracy:</strong> <span id="accuracy">N/A</span></p>
+    </div>
+    
+    <a href="/"><button style="text-align: center; background-color: #fff; color: #333; padding: 10px; font-size: 20px; font-weight: bold; border-radius: 10px;">Home</button></a>
+    
+    <footer>
+        <div class="disclaimer">
+            <h2>Disclaimer</h2>
+            <p>This website provides information for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Consult with a healthcare professional for any medical concerns.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const patientName = urlParams.get("patientName");
+        const patientNameElement = document.getElementById("patientName");
+        if (patientNameElement && patientName) {
+            patientNameElement.textContent = patientName;
+        }
+
+        const currentDateElement = document.getElementById("currentDate");
+        const currentDayElement = document.getElementById("currentDay");
+        const currentTimeElement = document.getElementById("currentTime");
+
+
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+        const formattedDate = now.toLocaleDateString(undefined, options);
+
+        if (currentDateElement && currentDayElement && currentTimeElement) {
+            currentDateElement.textContent = formattedDate.split(", ")[1];
+            currentDayElement.textContent = formattedDate.split(", ")[0]; 
+            currentTimeElement.textContent = formattedDate.split(", ")[2]; 
+        }
+
+        const accuracyElement = document.getElementById("accuracy");
+        const accuracyValue = {{ accuracy }};
+        if (accuracyElement && !isNaN(accuracyValue)) {
+            const accuracyPercentage = (accuracyValue * 100).toFixed(2);
+            accuracyElement.textContent = `${accuracyPercentage}%`;
+        }
+    </script>
+</body>
+</html>
